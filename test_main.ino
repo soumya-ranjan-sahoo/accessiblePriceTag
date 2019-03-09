@@ -9,10 +9,9 @@ CapacitiveSensor capSensor1 = CapacitiveSensor(D4, D2);
 const char* ssid = "pi";
 const char* password = "unisaarland";
 
-const char* host = "192.168.137.184";
+const char* host = "192.168.137.227";
 long sensorValue1;
 WiFiClient client;
-
 void setup() 
 {
   Serial.begin(115200);
@@ -45,12 +44,11 @@ void loop()
  if(WiFi.status()== WL_CONNECTED)
  {   //Check WiFi connection status
  
- if(client.connect("192.168.137.184", 3000))
+ if(client.connect("192.168.137.227", 3000))
  {
-//  client.println("host : 192.168.137.184");
+
 Serial.println("host : 192.168.137.184");
 Serial.println("connected");
-  //client.println("hello from ESP8266");
   }
  
  
@@ -58,14 +56,14 @@ Serial.println("connected");
     url += (sensorValue1);
     url += "&ip=";
     url += WiFi.localIP().toString();
-
+    
+if(sensorValue1 > 15)
+{
     client.print(String("GET ") + url + " HTTP/1.1\r\n" +
                "Host: " + host + "\r\n" + 
                "Connection: close\r\n\r\n");
 
-
-  Serial.println("wait 1 sec...");
-  delay(1000);
+}
  
  
   
