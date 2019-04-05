@@ -139,7 +139,9 @@ public class MainActivity extends AppCompatActivity {
                 .onEnter(new Function1<ProximityZoneContext, Unit>() {
                     @Override
                     public Unit invoke(final ProximityZoneContext context) {
-                         //deviceID =
+                        
+               // The commented code is for distance measurement from beacon and smartphones. Must be run on another thread.
+                       
 //                        beaconManager.setRangingListener(new BeaconManager.BeaconRangingListener() {
 //                            @Override
 //                            public void onBeaconsDiscovered(BeaconRegion beaconRegion, List<Beacon> beacons) {
@@ -160,9 +162,6 @@ public class MainActivity extends AppCompatActivity {
 
                         TextView textViewItemName =  findViewById(R.id.textViewItemName);
 
-
-
-                       // notificationManager.notify(notificationId, helloNotification);
                         return null;
                     }
                 })
@@ -228,10 +227,6 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                         mSocket.emit("beacon", obj);
-
-                        //ImageView image = findViewById(R.id.imageView);
-                        //image.setImageResource(R.drawable.beetroot);
-
 
                     }
 
@@ -369,8 +364,7 @@ public class MainActivity extends AppCompatActivity {
         TTS.setSpeechRate(0.75f);
         TTS.setPitch(0.85f);
         TTS.speak(text, TextToSpeech.QUEUE_ADD, null);
-        //oldText = null;
-
+       
     }
 
     @Override
