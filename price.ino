@@ -10,8 +10,6 @@ int total = 0;                  // the running total
 int average = 0 ; 
 int count = 0 ;
 
-#include <CapacitiveSensor.h>
-
 // touch sensor config
 CapacitiveSensor capSensor1 = CapacitiveSensor(D4, D2);
 
