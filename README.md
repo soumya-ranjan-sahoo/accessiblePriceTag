@@ -115,7 +115,7 @@ Now, once you set up your WAP, you can clone the following [Our repository/piSer
 1. piServer.js file : It has the server script for running a Node server and handling the touch event request-response and handshakes with all the connected devices (wemos and android devices).
 
 
-To run the server script:
+Run the server script:
 ```bash
 sudo node piServer.js
 ```
@@ -124,7 +124,7 @@ sudo node piServer.js
 
 Build a simple capactive touch circuit using a Cu/Al foil. In our experiment we used Cu foil for better responsivity. [TouchCircuit](https://playground.arduino.cc/Main/CapacitiveSensor/)
 
-Now that you have a touch circuit, burn the following code [Our repository/price_tag_wemos1](https://github.com/soumya-ranjan-sahoo/accessiblepricetag) to one of your wemos minis (We used 2 wemos minis for our experiment). Once the code is burned and suitable COM PORT and Baud rate are set, you should be able to view the touch values on your serial monitor of the IDE. 
+Now that you have a touch circuit, burn the following code [Our repository/price_tag_wemos1](https://github.com/soumya-ranjan-sahoo/accessiblepricetag) to the wemos mini (We used 2 wemos minis for our experiment). Once the code is burned and suitable COM PORT and Baud rate are set, you should be able to view the touch values on your serial monitor of the IDE. 
 
 ## Android
 
