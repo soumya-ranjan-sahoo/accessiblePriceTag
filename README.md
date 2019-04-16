@@ -128,7 +128,7 @@ Now that you have a touch circuit, burn the following code [Our repository/price
 
 ## Android
 
-The android app can be installed either by the APK file provided above or by building the code via Android studio with your device as the target. 
+The android app can be installed either by the APK file provided above or by building the code via Android studio with your device as the target. (Provided APK is in debug mode.)
 
 Estimote app is required to be pre-installed via PlayStore on the Android device.
 
