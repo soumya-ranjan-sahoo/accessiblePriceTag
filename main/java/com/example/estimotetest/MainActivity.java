@@ -72,11 +72,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        // Credentials can be changed here
         EstimoteCloudCredentials cloudCredentials =
                 new EstimoteCloudCredentials("proximity-for-multiple-bea-4sq", "92097cff0f208f0dd08a8217472686fe");
 
-
+        // init code for distance monitoring
         beaconManager = new BeaconManager(this);
         beaconManager.setBackgroundScanPeriod(1, 1);
         beaconManager.setForegroundScanPeriod(100, 1);
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+        // notifications 
         final NotificationsManager notificationsManager;
         final NotificationManager notificationManager;
         notificationsManager = new NotificationsManager(this);
@@ -99,11 +99,12 @@ public class MainActivity extends AppCompatActivity {
 
         final int notificationId = 1;
 
-
+        // TTS 
         TTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if (status == TextToSpeech.SUCCESS){
+                    // Language can be changed here
                    int result = TTS.setLanguage(Locale.ENGLISH);
                    if(result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
                        Log.e("TTS","Language not supported");
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+        // Proximity observer for identifying beacons nearby
         this.proximityObserver =
                 new ProximityObserverBuilder(getApplicationContext(), cloudCredentials)
                         .onError(new Function1<Throwable, Unit>() {
@@ -155,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
 //                                }
 //                            }
 //                        });
+                        // Attachments can be changed here
                         deskOwner = context.getAttachments().get("room-owner");
                         Log.d("app", "Welcome to " + deskOwner + "'s desk");
 
@@ -198,8 +200,10 @@ public class MainActivity extends AppCompatActivity {
         ProximityObserver.Handler observationHandler =
                 proximityObserver
                         .startObserving(zone);
+        
+        
 
-
+        // SocketIO connection code
         final JSONObject obj = new JSONObject();
         try {
             obj.put("Beacon", "hello");
@@ -209,7 +213,8 @@ public class MainActivity extends AppCompatActivity {
         final String URI = "192.168.5.1";
 
 
-
+        // moer events can be added here by adding this .on("scan", new Emitter.Listener() {....}, 
+        // but the same events must be declared in the NodeJS server beacuse the client would be listening for those.
         final Socket mSocket;
         {
             try {
@@ -318,7 +323,7 @@ public class MainActivity extends AppCompatActivity {
                             speak(responsePriceTag);
                             oldText = responsePriceTag;
                             runOnUiThread(new Runnable(){
-
+                                // can add more prodcuts here 
                                 @Override
                                 public void run() {
                                     TextView textViewItemName = findViewById(R.id.textViewItemName);
@@ -361,6 +366,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void speak(String text) {
+        
+        // Rate and pitch of the speech can be changed here
         TTS.setSpeechRate(0.75f);
         TTS.setPitch(0.85f);
         TTS.speak(text, TextToSpeech.QUEUE_ADD, null);
