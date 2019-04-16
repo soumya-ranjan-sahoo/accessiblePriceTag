@@ -3,12 +3,12 @@
  #include <ESP8266HTTPClient.h>
   
 const int numReadings = 4;
-const int val = 1000; // Number of values read by sensor
+const int val = 1000; //  Total number of values read by sensor
 int readings[val];      // the readings from the  input
 int readIndex = 0;              // the index of the current reading
 int total = 0;                  // the running total
-int average = 0 ; 
-int count = 0 ;
+int average = 0 ; // To take average of 4 sensor values at a time
+int count = 0 ; // counter to check the number of values read by the sensor
 
 // touch sensor config
 CapacitiveSensor capSensor1 = CapacitiveSensor(D4, D2);
@@ -54,9 +54,9 @@ void loop()
   total = total + readings[readIndex];
   // advance to the next position in the array:
   readIndex = readIndex + 1;
-  count = count +1; // counter to check the number of values read by the sensor
+  count = count +1; 
 
-  // Here we are checking if we got 4 sensor values and wifi connected 
+  // Here we are checking if we got 4 sensor values and wifi status connected 
 
  if(WiFi.status()== WL_CONNECTED && count ==4)
   {   //Check WiFi connection status
