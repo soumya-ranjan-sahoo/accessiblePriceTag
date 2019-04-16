@@ -36,9 +36,8 @@ Edit the dhcpcd file:
 ```bash
 sudo nano /etc/dhcpcd.conf
 ```
-denyinterfaces wlan0
 
-Scroll down, and at the bottom of the file, add:
+To the bottom of the file, add:
 ```bash
 denyinterfaces wlan0
 ```
@@ -63,7 +62,7 @@ iface wlan0 inet static
     broadcast 192.168.5.255
 ```
 
-Configure hostapd
+Configure hostapd:
 ```bash
 sudo nano /etc/hostapd/hostapd.conf
 ```
@@ -75,13 +74,13 @@ Find the line #DAEMON_CONF="" and replace it with:
 ```bash
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 ```
-Configure Dnsmasq
+Configure Dnsmasq:
 ```bash
 sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.bak
 sudo nano /etc/dnsmasq.conf
 ```
 
-In the  new file paste the following : 
+In the new file paste the following: 
 ```bash
 interface=wlan0 
 listen-address=192.168.5.1
@@ -96,8 +95,39 @@ Restart the Raspberry Rpi:
 ```bash
 sudo reboot
 ```
-
 Upon rebooting, you can see Pi boots as a WAP and you can see the Rpi's network when you search for avaibale WiFi connections from your devices.
+
+
+## Running a Node Server on Rpi
+
+Why use Node ?
+
+Node.js is a JS runtime environment which allows the infrastructure to build and run an application. It’s a light, scalable, and cross-platform way to execute code. It uses an event-driven I/O model which makes it extremely efficient and makes scalable network application possible.
+
+It provides great performance and scalibility, cross platform development, ever growing npm enterprise and great support from the community. Further details follows [node.js](https://nodejs.org/en/docs/)
+
+### Installation
+
+
+
+Now, once you set up your WAP, you can clone the following [Our repository/piServer](https://github.com/soumya-ranjan-sahoo/accessiblepricetag) and use the following :
+
+1. piServer.js file : It has the server script for running a Node server and handling the touch event request-response and handshakes with all the connected devices (wemos and android devices).
+
+
+To run the server script:
+```bash
+sudo node piServer.js
+```
+
+## Wemos Mini Touch Events
+
+Build a simple capactive touch circuit using a Cu/Al foil. In our experiment we used Cu foil for better responsivity. [TouchCircuit](https://playground.arduino.cc/Main/CapacitiveSensor/)
+
+Now that you have a touch circuit, burn the following code [Our repository/price_tag_wemos1](https://github.com/soumya-ranjan-sahoo/accessiblepricetag) to one of your wemos minis (We used 2 wemos minis for our experiment). Once the code is burned and suitable COM PORT and Baud rate are set, you should be able to view the touch values on your serial monitor of the IDE. 
+
+## Android
+
 
 
 
