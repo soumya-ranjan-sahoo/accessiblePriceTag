@@ -128,6 +128,17 @@ Now that you have a touch circuit, burn the following code [Our repository/price
 
 ## Android
 
+The android app can be installed either by the APK file provided above or by building the code via Android studio with your device as the target. 
+
+Estimote app is required to be pre-installed via PlayStore on the Android device.
+
+Bluetooth and Location services must be enabled for the app to work. If not enabled, the app prompts for it. Allow those permissions. 
+
+This app shows an image and a description of the product that was touched, along with a speech output and a notification. 
+
+This app works when the mobile device is locked, but not when the app is killed. 
+
+To extend this code, see the comments in the code to add more functionality (increasing the products or adding the distance based algorithm etc.)
 
 
 
