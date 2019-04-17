@@ -147,9 +147,9 @@ It provides great performance and scalibility, cross platform development, ever 
 
 ### Installation
 
-A very good tutorial series for installing node and npm is [here](https://www.instructables.com/id/Install-Nodejs-and-Npm-on-Raspberry-Pi/)
+A very good tutorial series for installing node and npm is [here](https://www.instructables.com/id/Install-Nodejs-and-Npm-on-Raspberry-Pi/).
 
-Since, we faced a few node versioning issues, we recommend you to try other installation methods [like](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04) in case the later doesn't work for you. We used the latest version of Node (v10.15.3).
+Since, we faced a few node versioning issues, we recommend you to try other installation methods like [here](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04) in case the later doesn't work for you. We used the latest version of Node (v10.15.3).
 
 Now, once you have set up your node server and have spanned your network, you can clone the following [Our repository/piServer](https://github.com/soumya-ranjan-sahoo/accessiblepricetag) and use the following :
 
