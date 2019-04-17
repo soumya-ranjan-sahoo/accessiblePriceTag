@@ -95,8 +95,47 @@ Restart the Raspberry Rpi:
 ```bash
 sudo reboot
 ```
-Upon rebooting, you can see Pi boots as a WAP and you can see the Rpi's network when you search for avaibale WiFi connections from your devices.
+Upon rebooting, you can see Pi boots as a WAP and you can see the Rpi's network when you search for avaibale WiFi connections from your devices, Pi shows up.
 
+Now, lets enable packet forwarding for accessing internet via LAN.
+
+Edit the /etc/sysctl.conf file:
+```bash
+sudo nano /etc/sysctl.conf
+```
+Look for the line #net.ipv4.ip_forward=1, and uncomment it by deleting the #
+```bash
+net.ipv4.ip_forward=1
+
+```
+
+Finally, we need to configure Network Address Translation (NAT) between the Ethernet and WiFi interfaces to allow devices on both networks to communicate with each other. In the terminal, enter the following:
+```bash
+sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE  
+sudo iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
+```
+
+Save the current rules to a file with this command:
+```bash
+sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+```
+
+This will work for now, but on reboot, the Pi will revert back to its previous state. To fix this, we need these NAT rules to be applied each time it starts up. So, let us run the above file upon boot. We recommend using rc.local file for this:
+```bash
+sudo nano /etc/rc.local
+```
+
+Just above the exit 0 line (which ends the script), add the following:
+```bash
+iptables-restore < /etc/iptables.ipv4.nat 
+```
+Restart Rpi:
+```bash
+sudo reboot
+```
+
+Connect an Ethernet cable from your Internet router (or switch, etc.) to your Pi. Once the Pi boots up, connect to the MyPiAP network from your computer. Open a web browser, and navigate to the website of your choice.
 
 ## Running a Node Server on Rpi
 
