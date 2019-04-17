@@ -1,3 +1,5 @@
+//  For detecting from which wemos(wemos1) touch input has occurred
+
 #include <CapacitiveSensor.h>
 #include "ESP8266WiFi.h"
  #include <ESP8266HTTPClient.h>
