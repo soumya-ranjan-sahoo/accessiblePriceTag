@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
         final String URI = "192.168.5.1";
 
 
-        // moer events can be added here by adding this .on("scan", new Emitter.Listener() {....}, 
+        // more events can be added here by adding this .on("scan", new Emitter.Listener() {....}, 
         // but the same events must be declared in the NodeJS server beacuse the client would be listening for those.
         final Socket mSocket;
         {
@@ -229,6 +229,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void call(Object... args) {
+                        // initial connection to socketIO server
                         boolean connected = mSocket.connected();
                         if(connected){
                             Log.e("Connected to", URI);
@@ -238,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
                         mSocket.emit("beacon", obj);
 
                     }
-
+                
                 }).on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
 
 
@@ -264,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
                     public void call(Object... args) {
                     Log.e("Disconnected", " " + URI);
                     }
-
+                // This listener scans for nearby beacons and sends the beacon's unique ID.
                 }).on("scan", new Emitter.Listener() {
 
                     @Override
