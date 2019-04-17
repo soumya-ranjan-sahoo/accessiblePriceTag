@@ -123,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Proximity observer for identifying beacons nearby using Estmote SDK.
-        // Replace this code (till line 203), if you want to use other techniques for identifying which device is near.
+        // Replace this code (till line 203), if you want to use other techniques for identifying which device is near
+        // like indoor navigation system
         // Function can be created instead and called here
         this.proximityObserver =
                 new ProximityObserverBuilder(getApplicationContext(), cloudCredentials)
