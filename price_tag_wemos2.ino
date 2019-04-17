@@ -4,7 +4,7 @@
   
 const int numReadings = 4;
 const int val = 1000; //  Total number of values read by sensor
-int readings[val];      // the readings from the  input
+int readings[val];      //  storing the sensor readings in this variable
 int readIndex = 0;              // the index of the current reading
 int total = 0;                  // the running total
 int average = 0 ; // To take average of 4 sensor values at a time
