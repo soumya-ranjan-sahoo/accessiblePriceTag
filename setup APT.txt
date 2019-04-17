@@ -1,14 +1,30 @@
 
-Steps to replicate :
-
-1. Start the Rpi. (That automatically spans a WiFi network and starts up the node server). If you further want to manually start the server and see events on the terminal, you may use the following path cd HelloExpress/node_modules and then use sudo node server3.js to start the server. If there is a server session already running, use sudo killall -9 node to shut down the previous instance and then launch sudo node server3.js to start a new server session.
-
-2. Power the Wemos via Micro USB Port. (Wemos automatically connects to the Rpi's WiFi network)
-
-											Pi Server Details : login : pi
-                    										 password : unisaarland
-																				 Ip for Rasberry Pi: 192.168.5.1
-
-3. Connect all the android devices to Rpi's WiFi network. (Make sure you install estimote application and IRL accessible price tag application on your android device)
-
-4. Now, you can start the experiment by touching the Price tag and you can get an auditive feedback on your connected smartphone which is near to the corresponding beacon of the touched price tag. 
+ Steps to replicate :
+ 
+ 1. Start the Rpi. (That automatically spans a WiFi network and starts up the node server). 
+ If you further want to manually start the server and see events on the terminal, you may use the following path: 
+ 
+ cd HelloExpress/node_modules/
+ 
+ And then use sudo node server3.js to start the server 
+ 
+ If there is a server session already running,use below command to kill that session :
+ 
+ sudo killall -9 node
+ 
+ And then launch sudo node server3.js to start a new server session.
+ 
+ 2. Power the Wemos via Micro USB Port. (Wemos automatically connects to the Rpi's WiFi network)
+ 
+                         Pi Server Details :    login : pi
+                                             password : unisaarland
+                                     Ip for Rasberry Pi: 192.168.5.1
+ 
+ 3. Connect all the android devices to Rpi's WiFi network. 
+ (Make sure you install estimote application and IRL accessible price tag application on your android device)
+ 
+ 4. Now, you can start the experiment by touching the Price tag and you can get an auditive feedback on your 
+ connected smartphone which is near to the corresponding beacon of the touched price tag. 
+ ~                                                                                                                                                                                                          
+ ~                                                                                                                                                                                                          
+ ~                                                                            
