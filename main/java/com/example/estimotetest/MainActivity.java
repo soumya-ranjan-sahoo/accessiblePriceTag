@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Credentials can be changed here
+        // Credentials for beacons can be changed here
         EstimoteCloudCredentials cloudCredentials =
                 new EstimoteCloudCredentials("proximity-for-multiple-bea-4sq", "92097cff0f208f0dd08a8217472686fe");
 
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // notifications 
+        // notifications init
         final NotificationsManager notificationsManager;
         final NotificationManager notificationManager;
         notificationsManager = new NotificationsManager(this);
@@ -99,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
 
         final int notificationId = 1;
 
-        // TTS 
+        // TTS
+        // Change TTS services here if required, and also in the function speak()
         TTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -121,7 +122,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        // Proximity observer for identifying beacons nearby
+        // Proximity observer for identifying beacons nearby using Estmote SDK.
+        // Replace this code (till line 203), if you want to use other techniques for identifying which device is near.
+        // Function can be created instead and called here
         this.proximityObserver =
                 new ProximityObserverBuilder(getApplicationContext(), cloudCredentials)
                         .onError(new Function1<Throwable, Unit>() {
@@ -205,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
 
         // SocketIO connection code
         final JSONObject obj = new JSONObject();
+        // Trial message for socket connection establishment, can be changed
         try {
             obj.put("Beacon", "hello");
         } catch (JSONException e) {
@@ -289,6 +293,8 @@ public class MainActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        // This if check is to avoid multiple TTS instances on simultaneous touch events.
+                        // Hence, for multiple touch events of same product, TTS happens only one time, and so does UI updation
                         if(oldText != null) {
 
                             if (!responsePriceTag.contentEquals(oldText)) {
@@ -296,6 +302,8 @@ public class MainActivity extends AppCompatActivity {
                                 Notification priceNotification = notificationsManager.buildNotification("Hello", "" + responsePriceTag);
                                 notificationManager.notify(notificationId, priceNotification);
                                 oldText = responsePriceTag;
+                                // Images and text should be updated here on touch events.
+                                // Images must be first imported in the project folder.
                                 runOnUiThread(new Runnable(){
 
                                     @Override
@@ -322,6 +330,8 @@ public class MainActivity extends AppCompatActivity {
                         {
                             speak(responsePriceTag);
                             oldText = responsePriceTag;
+                             // Images and text should be updated here on touch events.
+                               // Images must be first imported in the project folder.
                             runOnUiThread(new Runnable(){
                                 // can add more prodcuts here 
                                 @Override
@@ -341,6 +351,8 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 }
                             });
+                            // Notification can be changed here
+                            // New notification icon can be added too.
                             Notification priceNotification = notificationsManager.buildNotification("Hello", "" + responsePriceTag);
                             notificationManager.notify(notificationId, priceNotification);
                         }
