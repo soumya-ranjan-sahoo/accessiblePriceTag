@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void call(Object... args) {
-                        // initial connection to socketIO server (first handshake)
+                        // initial connection to socketIO server 
                         boolean connected = mSocket.connected();
                         if(connected){
                             Log.e("Connected to", URI);
@@ -266,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
                     public void call(Object... args) {
                     Log.e("Disconnected", " " + URI);
                     }
-                // This listener scans for nearby beacons and sends the beacon's unique ID. (second handshake)
+                // This listener scans for nearby beacons and sends the beacon's unique ID. (first handshake)
                 }).on("scan", new Emitter.Listener() {
 
                     @Override
@@ -280,10 +280,11 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         Log.d("ID","id id "+ deskOwner);
+                        // sends beacon-id (second handshake)
                         mSocket.emit("beacon-id", "\n" +
                                 deskOwner );
                     }
-                // listener for the price event (third handshake)
+                // listener for the price event  (third handshake)
                 }).on("price", new Emitter.Listener() {
 
                     @Override
