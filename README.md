@@ -108,9 +108,11 @@ It provides great performance and scalibility, cross platform development, ever 
 
 ### Installation
 
+A very good tutorial series for installing node and npm is [here](https://www.instructables.com/id/Install-Nodejs-and-Npm-on-Raspberry-Pi/)
 
+Since, we faced a few node versioning issues, we recommend you to try other installation methods [like](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04) in case the later doesn't work for you. We used the latest version of Node (v10.15.3).
 
-Now, once you set up your WAP, you can clone the following [Our repository/piServer](https://github.com/soumya-ranjan-sahoo/accessiblepricetag) and use the following :
+Now, once you have set up your node server and have spanned your network, you can clone the following [Our repository/piServer](https://github.com/soumya-ranjan-sahoo/accessiblepricetag) and use the following :
 
 1. piServer.js file : It has the server script for running a Node server and handling the touch event request-response and handshakes with all the connected devices (wemos and android devices).
 
@@ -128,9 +130,9 @@ Now that you have a touch circuit, burn the following code [Our repository/price
 
 ## Android
 
-The android app can be installed either by the APK file provided above or by building the code via Android studio with your device as the target. (Provided APK is in debug mode.)
+The android app can be installed either by the APK file provided above [code](https://github.com/soumya-ranjan-sahoo/accessiblepricetag/tree/master/main) or by building the code via Android studio with your device as the target. (Provided APK is in debug mode.)
 
-Estimote app is required to be pre-installed via PlayStore on the Android device.
+Estimote app is required to be pre-installed via PlayStore on the Android device. [estimote](https://estimote.com/?gclid=CjwKCAjwndvlBRANEiwABrR32J1tbCsnUbETLmv2uhqp8TmcLkwJDbsrIoUi9gVG5LQOpnyaa-sbIxoCKFIQAvD_BwE)
 
 Bluetooth and Location services must be enabled for the app to work. If not enabled, the app prompts for it. Allow those permissions. 
 
