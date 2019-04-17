@@ -1,12 +1,13 @@
-
+// Variable for express library
 const express = require('express'),
-
+// Variable for http server library
 http = require('http'),
 
 app = express(),
-
+// Creating a http server
 server = http.createServer(app),
 
+ // Variable for listening socket 
 io = require('socket.io').listen(server);
 
 app.get('/', (req, res) => {
@@ -14,16 +15,7 @@ app.get('/', (req, res) => {
 res.send('Pi Server is running on port 3000')
 })
 
-var t,wemos, pt;
-
-//app.use('/sensor',function(req,res,next)
-//{
-// t = req.param('value');
-//console.log("value  = " + t);
-//console.log("hi");
-//})
-
-
+var sensor_input,wemos_id, pt;
 
 server.listen(3000,()=>{
 
