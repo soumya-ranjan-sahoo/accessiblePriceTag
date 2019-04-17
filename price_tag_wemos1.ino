@@ -4,9 +4,9 @@
   
 const int numReadings = 4; // to read 4 sensor values at a time
 const int val = 1000; //  Total number of values read by sensor
-int readings[val];      // the readings from the  input
+int readings[val];      //  storing the sensor readings in this variable
 int readIndex = 0;              // the index of the current reading
-int total = 0;                  // the running total
+int total = 0;                  // total is used to calculate the average value
 int average = 0 ; // To take average of 4 sensor values at a time
 int count = 0 ; // counter to check the number of values read by the sensor
 
@@ -54,6 +54,7 @@ void loop()
   total = total + readings[readIndex];
   // advance to the next position in the array:
   readIndex = readIndex + 1;
+ // count  is used to avoid multi touches by the person 
   count = count +1; 
 
   // Here we are checking if we got 4 sensor values and wifi status connected 
