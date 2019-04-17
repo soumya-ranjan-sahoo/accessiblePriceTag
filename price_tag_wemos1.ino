@@ -72,15 +72,16 @@ void loop()
         // Here sending the average value to server   
         String url = "/sensor?command=sensor&value=";
         url += average;
-        url += "&id=";    // Variable for detecting from which wemos, touch input is coming
+        url += "&id=";    // Variable for detecting from which wemos, touch input has occurred
         url += "wemos1";
    
-        // Here we are checking if client is  also connected
+        // Here we are checking if client is connected
        if(client.connect("192.168.5.1", 3000))
          {
             Serial.println("client");
-           // Sending only those touch values whose average is greater than 15( Based on empirical data)
-                if(average > 15)
+        
+           // Sending only those touch values whose average is greater than 15( Value chosen based on empirical data)
+                        if(average > 15)
                 {
                     client.print(String("GET ") + url + " HTTP/1.1\r\n" +
                     "Host: " + host + "\r\n" + 
