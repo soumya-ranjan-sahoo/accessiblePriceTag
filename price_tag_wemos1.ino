@@ -72,9 +72,10 @@ void loop()
        Serial.println(average);
    
         // Here sending the average value to server   
+         // id : Variable for detecting from which wemos touch input has occurred
         String url = "/sensor?command=sensor&value=";
         url += average;
-        url += "&id=";    // Variable for detecting from which wemos, touch input has occurred
+        url += "&id=";   
         url += "wemos1";
    
         // Here we are checking if client is connected
