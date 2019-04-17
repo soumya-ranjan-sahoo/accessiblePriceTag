@@ -2,7 +2,7 @@
 #include "ESP8266WiFi.h"
  #include <ESP8266HTTPClient.h>
   
-const int numReadings = 4;
+const int numReadings = 4; // to read 4 sensor values at a time
 const int val = 1000; //  Total number of values read by sensor
 int readings[val];      // the readings from the  input
 int readIndex = 0;              // the index of the current reading
