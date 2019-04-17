@@ -2,8 +2,8 @@
 #include "ESP8266WiFi.h"
  #include <ESP8266HTTPClient.h>
   
-const int numReadings = 4; // to read 4 sensor values at a time
-const int val = 1000; //  Total number of values read by sensor
+const int numReadings = 4; // to read 4 sensor values 
+const int val = 1000; //  Maximum number of values read by the sensor
 int readings[val];      //  storing the sensor readings in this variable
 int readIndex = 0;              // the index of the current reading
 int total = 0;                  // total is used to calculate the average value
@@ -50,11 +50,11 @@ void loop()
   long sensorValue1 = capSensor1.capacitiveSensor(30);
   readings[readIndex] = sensorValue1;
     
-  // add the reading to the total:
+  // add the sensor value to the total:
   total = total + readings[readIndex];
-  // advance to the next position in the array:
+  // increment the array index:
   readIndex = readIndex + 1;
- // count  is used to avoid multi touches by the person 
+ // count is used to avoid multiple simultanous touches by the person 
   count = count +1; 
 
   // Here we are checking if we got 4 sensor values and wifi status connected 
@@ -69,7 +69,7 @@ void loop()
        average = total / numReadings;
        Serial.println(average);
    
-        // Here we are only sending the average of 4 sensor values   
+        // Here sending the average value to server   
         String url = "/sensor?command=sensor&value=";
         url += average;
         url += "&id=";    // Variable for detecting from which wemos, touch input is coming
@@ -79,7 +79,7 @@ void loop()
        if(client.connect("192.168.5.1", 3000))
          {
             Serial.println("client");
-           // Sending only those touch values whose average is greater than 15 
+           // Sending only those touch values whose average is greater than 15( Based on empirical data)
                 if(average > 15)
                 {
                     client.print(String("GET ") + url + " HTTP/1.1\r\n" +
