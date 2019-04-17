@@ -266,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
                     public void call(Object... args) {
                     Log.e("Disconnected", " " + URI);
                     }
-                // This listener scans for nearby beacons and sends the beacon's unique ID. (first handshake)
+                // This listener scans for nearby beacons. (first handshake)
                 }).on("scan", new Emitter.Listener() {
 
                     @Override
