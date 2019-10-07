@@ -1,4 +1,4 @@
-# Accessible PriceTag
+# Accessible PriceTag (in collaboration with DFKI)
 This project has the goal to make price tags and product information easily accessible for visually impaired users. 
 
 Price tags are augmented with sensors (e.g. capacitive touch) such that users can touch the price tags to get auditive feedback about
